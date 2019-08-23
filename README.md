@@ -11,10 +11,13 @@ This is a frontend for the collection of tools used by the zebra.
 <br>
 
 ### How To
-```angular2html
+
+```
 pip3 install pyqt5
+python3 ./window.py
 ```
 
+<br>
 
 ### To Do
 + Add a plot.
