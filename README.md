@@ -14,6 +14,7 @@ This is a frontend for the collection of tools used by the zebra.
 
 ```
 pip3 install pyqt5
+pip3 install matplotlib
 python3 ./window.py
 ```
 

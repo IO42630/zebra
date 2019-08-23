@@ -1,55 +1,70 @@
 import sys
 
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy, QComboBox, QFileDialog
-
+from plot_canvas import PlotCanvas
 
 class Window(QMainWindow):
 
     def __init__(self):
-
-
-
         super().__init__()
 
-        container = QWidget(self)
-        self.setCentralWidget(container)
+        self.container = QWidget(self)
+        self.grid = QGridLayout()
 
-        grid = QGridLayout()
+        self.setCentralWidget(self.container)
+        self.container.setLayout(self.grid)
+
+
+        self.define_widgets()
+        self.set_widget_actions()
+        self.main_view()
+
+        self.setGeometry(0, 0, 500, 300)
+        self.setWindowTitle("Zebra")
+        self.show()
+        sys.exit(app.exec_())
+
+
+    def define_widgets(self):
+        ''' Define widgets such as buttons. This must be done before setting widget actions.
+        Otherwise a widget action might try to modify a widget that is not defined yet.'''
+
         # add empty label as spacer after buttons
-        grid.addWidget(QLabel(), 10,10)
-        container.setLayout(grid)
+        self.grid.addWidget(QLabel(), 10,10)
 
-
-        # define buttons
-        self.button_zebra = self.make_button("1 Zebra", grid, 0, 0 )
-        self.button_back = self.make_button("Back", grid, 0,0)
-        self.button_dmc = self.make_button("2 DMC", grid, 0,1)
-        self.button_transfer = self.make_button("3 Transfer\nZebra-DMC-Laue", grid,  0,2)
+        self.button_zebra = self.make_button("1 Zebra", self.grid, 0, 0 )
+        self.button_back = self.make_button("Back", self.grid, 0,0)
+        self.button_dmc = self.make_button("2 DMC", self.grid, 0,1)
+        self.button_transfer = self.make_button("3 Transfer\nZebra-DMC-Laue", self.grid,  0,2)
 
 
         self.m_range_label = QLabel("Measurement Range:")
-        grid.addWidget(self.m_range_label, 0, 1)
+        self.grid.addWidget(self.m_range_label, 0, 2)
 
+        self.plot_canvas = PlotCanvas(width = 5, height = 5)
+        self.plot_canvas.setFixedWidth(400)
+        self.plot_canvas.setFixedHeight(300)
+        self.grid.addWidget(self.plot_canvas,0,1,3,1)
 
 
         self.m_range_combo = QComboBox()
-        self.m_range_combo.addItem("hkl")
-        self.m_range_combo.addItem("-hkl")
-        self.m_range_combo.addItem("hex")
-        self.m_range_combo.addItem("cub")
+        self.m_range_combo.addItems(["hkl", "-hkl", "hex", "cub"])
 
-        grid.addWidget(self.m_range_combo, 0,2)
+        self.grid.addWidget(self.m_range_combo, 0,3)
 
 
         self.add_data_label = QLabel("Add Data:")
-        grid.addWidget(self.add_data_label,1,1)
-        self.add_data_button = self.make_button("Open File", grid, 1, 2)
+        self.grid.addWidget(self.add_data_label,1,2)
+        self.add_data_button = self.make_button("Open File", self.grid, 1, 3)
 
-        self.button_zebra13 = self.make_button("1.3", grid, 3,1)
+        self.button_zebra13 = self.make_button("1.3", self.grid, 3,3)
 
-        self.button_dmc21 = self.make_button("2.1", grid, 0,1)
-        self.button_dmc22 = self.make_button("2.2", grid, 1,1)
+        self.button_dmc21 = self.make_button("2.1", self.grid, 0,1)
+        self.button_dmc22 = self.make_button("2.2", self.grid, 1,1)
 
+
+
+    def set_widget_actions(self):
 
 
         # define button actions
@@ -66,11 +81,8 @@ class Window(QMainWindow):
         self.button_dmc22.clicked.connect(self.dmc22_action)
 
 
-        self.main_view()
-        self.setGeometry(0, 0, 500, 300)
-        self.setWindowTitle("Zebra")
-        self.show()
-        sys.exit(app.exec_())
+
+
 
 
     def hide_all(self):
@@ -82,6 +94,8 @@ class Window(QMainWindow):
         self.m_range_label.setHidden(True)
         self.m_range_combo.setHidden(True)
 
+
+        self.plot_canvas.setHidden(True)
         self.add_data_label.setHidden(True)
         self.add_data_button.setHidden(True)
         self.button_zebra13.setHidden(True)
@@ -103,6 +117,8 @@ class Window(QMainWindow):
     def zebra_view(self):
         self.hide_all()
         self.button_back.setHidden(False)
+
+        self.plot_canvas.setHidden(False)
 
         self.m_range_label.setHidden(False)
         self.m_range_combo.setHidden(False)
