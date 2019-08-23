@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy, QComboBox
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy, QComboBox, QFileDialog
 
 
 class Window(QMainWindow):
@@ -40,7 +40,11 @@ class Window(QMainWindow):
 
         grid.addWidget(self.m_range_combo, 0,2)
 
-        self.button_zebra12 = self.make_button("1.2", grid, 1,1)
+
+        self.add_data_label = QLabel("Add Data:")
+        grid.addWidget(self.add_data_label,1,1)
+        self.add_data_button = self.make_button("Open File", grid, 1, 2)
+
         self.button_zebra13 = self.make_button("1.3", grid, 3,1)
 
         self.button_dmc21 = self.make_button("2.1", grid, 0,1)
@@ -55,7 +59,7 @@ class Window(QMainWindow):
         self.button_transfer.clicked.connect(self.transfer_view)
 
         self.m_range_combo.activated[str].connect(self.set_m_range)
-        self.button_zebra12.clicked.connect(self.zebra12_action)
+        self.add_data_button.clicked.connect(self.open_file)
         self.button_zebra13.clicked.connect(self.zebra13_action)
 
         self.button_dmc21.clicked.connect(self.dmc21_action)
@@ -77,7 +81,9 @@ class Window(QMainWindow):
 
         self.m_range_label.setHidden(True)
         self.m_range_combo.setHidden(True)
-        self.button_zebra12.setHidden(True)
+
+        self.add_data_label.setHidden(True)
+        self.add_data_button.setHidden(True)
         self.button_zebra13.setHidden(True)
 
         self.button_dmc21.setHidden(True)
@@ -100,7 +106,10 @@ class Window(QMainWindow):
 
         self.m_range_label.setHidden(False)
         self.m_range_combo.setHidden(False)
-        self.button_zebra12.setHidden(False)
+
+        self.add_data_label.setHidden(False)
+        self.add_data_button.setHidden(False)
+
         self.button_zebra13.setHidden(False)
 
     def dmc_view(self):
@@ -116,10 +125,15 @@ class Window(QMainWindow):
         self.button_back.setHidden(False)
 
 
-    def zebra11_action(self):
-        pass
 
-    def zebra12_action(self):
+    def open_file(self):
+        ''' Corresponds to 1.2
+        TODO Right now this is just copy&pasted. Clean this up.'''
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+        if fileName:
+            print(fileName)
         pass
 
     def zebra13_action(self):
@@ -132,8 +146,12 @@ class Window(QMainWindow):
         pass
 
     def set_m_range(self, selection):
+        ''' Corresponds to 1.1'''
         print(selection)
         pass
+
+
+
 
 
 
