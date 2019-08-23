@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy, QComboBox
 
 
 class Window(QMainWindow):
@@ -26,7 +26,20 @@ class Window(QMainWindow):
         self.button_dmc = self.make_button("2 DMC", grid, 0,1)
         self.button_transfer = self.make_button("3 Transfer\nZebra-DMC-Laue", grid,  0,2)
 
-        self.button_zebra11 = self.make_button("1.1", grid, 0, 1)
+
+        self.m_range_label = QLabel("Measurement Range:")
+        grid.addWidget(self.m_range_label, 0, 1)
+
+
+
+        self.m_range_combo = QComboBox()
+        self.m_range_combo.addItem("hkl")
+        self.m_range_combo.addItem("-hkl")
+        self.m_range_combo.addItem("hex")
+        self.m_range_combo.addItem("cub")
+
+        grid.addWidget(self.m_range_combo, 0,2)
+
         self.button_zebra12 = self.make_button("1.2", grid, 1,1)
         self.button_zebra13 = self.make_button("1.3", grid, 3,1)
 
@@ -41,7 +54,7 @@ class Window(QMainWindow):
         self.button_dmc.clicked.connect(self.dmc_view)
         self.button_transfer.clicked.connect(self.transfer_view)
 
-        self.button_zebra11.clicked.connect(self.zebra11_action)
+        self.m_range_combo.activated[str].connect(self.set_m_range)
         self.button_zebra12.clicked.connect(self.zebra12_action)
         self.button_zebra13.clicked.connect(self.zebra13_action)
 
@@ -62,7 +75,8 @@ class Window(QMainWindow):
         self.button_dmc.setHidden(True)
         self.button_transfer.setHidden(True)
 
-        self.button_zebra11.setHidden(True)
+        self.m_range_label.setHidden(True)
+        self.m_range_combo.setHidden(True)
         self.button_zebra12.setHidden(True)
         self.button_zebra13.setHidden(True)
 
@@ -83,7 +97,9 @@ class Window(QMainWindow):
     def zebra_view(self):
         self.hide_all()
         self.button_back.setHidden(False)
-        self.button_zebra11.setHidden(False)
+
+        self.m_range_label.setHidden(False)
+        self.m_range_combo.setHidden(False)
         self.button_zebra12.setHidden(False)
         self.button_zebra13.setHidden(False)
 
@@ -115,7 +131,9 @@ class Window(QMainWindow):
     def dmc22_action(self):
         pass
 
-
+    def set_m_range(self, selection):
+        print(selection)
+        pass
 
 
 
