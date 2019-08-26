@@ -1,5 +1,5 @@
 
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QPushButton, QAction, QHBoxLayout, QTabWidget, QTableWidget, QPlainTextEdit
+from PyQt5.QtWidgets import QWidget, QGridLayout, QComboBox, QLabel, QPushButton, QAction, QHBoxLayout, QTabWidget, QTableWidget, QPlainTextEdit
 
 
 class TwoDimView(QWidget):
@@ -120,8 +120,13 @@ class Buttons11(QWidget):
         self.substractButton = QPushButton('Substract')
         self.grid.addWidget(self.substractButton, 0,2)
 
-        self.integrateButton = QPushButton('Integrate')
-        self.grid.addWidget(self.integrateButton,1,0)
+
+        self.integrateComboBox = QComboBox()
+        self.integrateComboBox.addItems(['Integrate','-> Gaussian', '-> Pseudo-Voidg', '-> Lorenzian', '-> Several Peaks'])
+        self.grid.addWidget(self.integrateComboBox,1,0)
+
+
+
 
         self.lorentzButton = QPushButton('Lorentz')
         self.grid.addWidget(self.lorentzButton,1,1)
