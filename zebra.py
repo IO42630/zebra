@@ -58,9 +58,10 @@ class Zebra(QMainWindow):
         self.modeMenu = self.menuBar().addMenu('Mode')
 
 
-        self.welcomeMenuEntry = QAction('Zebra')
-        self.welcomeMenuEntry.triggered.connect(lambda: self.showView('welcome'))
-        self.modeMenu.addAction(self.welcomeMenuEntry)
+        # comment this in for extra zebras.
+        #self.welcomeMenuEntry = QAction('Zebra')
+        #self.welcomeMenuEntry.triggered.connect(lambda: self.showView('welcome'))
+        #self.modeMenu.addAction(self.welcomeMenuEntry)
 
 
         self.zebraMenuEntry = QAction('Prepare')

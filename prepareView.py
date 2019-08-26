@@ -145,6 +145,9 @@ class Buttons00(QWidget):
         super().__init__()
         grid = QGridLayout()
         self.setLayout(grid)
+        self.set
+        self.setFixedWidth(240)
+        self.setFixedHeight(200)
 
         c.loadCrystalFileButton = QPushButton()
         c.loadCrystalFileButton.setText("Load Crystal File")
