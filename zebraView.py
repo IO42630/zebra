@@ -33,32 +33,52 @@ class ZebraView(QWidget):
         # but to create the correct visual effect it must span also over the invisible spacder column,
         # Thus from (3,1) to (3,3).
         self.grid.addWidget(QLabel(), 10,10)
-        self.load_data_button = QPushButton()
-        self.load_data_button.setText("Load Data File")
-        self.load_data_button.setMaximumWidth(200)
-        self.grid.addWidget(self.load_data_button, 0, 0)
 
 
-        self.one_d_text = OneDText()
-        self.grid.addWidget(self.one_d_text, 1,0)
+        # Common items
 
 
-        self.one_d_table = OneDTable()
-        self.grid.addWidget(self.one_d_table,0,1, 4,1)
+        self.buttons00 = Buttons00()
+        self.grid.addWidget(self.buttons00,0,0)
 
 
 
-        self.buttons20 = Buttons20()
-        self.grid.addWidget(self.buttons20, 2,0)
+        # Zebra Nuc View
 
-        self.buttons30 = Buttons30()
-        self.grid.addWidget(self.buttons30, 3,0)
+        self.nucTable = OneDTable()
+        self.grid.addWidget(self.nucTable,0,1)
+
+
+        self.nucButtons11 = NucButtons11()
+        self.grid.addWidget(self.nucButtons11, 1,1)
+
+
+
+
+        #self.buttons20 = Buttons20()
+        #self.grid.addWidget(self.buttons20, 2,0)
+
+        #self.buttons30 = Buttons30()
+        #self.grid.addWidget(self.buttons30, 3,0)
+
+
+
+
+        # Zebra Mag View
+
+        self.magTable = OneDTable()
+        self.magVisual = OneDText()
+
 
 
 
     def set_widget_actions(self):
         pass
 
+
+    def showView(self,view):
+        self.nucTable.setHidden(True)
+        self.nucButtons11.setHidden(True)
 
 
 
@@ -85,38 +105,61 @@ class OneDTable(QTableWidget):
 
 
 
-
-
-
-
-class Buttons20(QWidget):
+class Buttons00(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.hbox = QHBoxLayout()
-        self.setLayout(self.hbox)
-        self.sortButton = QPushButton('Sort')
-        self.selectButton = QPushButton('Select')
-        self.optimizeButton = QPushButton('Optimize')
-        self.hbox.addWidget(self.sortButton)
-        self.hbox.addWidget(self.selectButton)
-        self.hbox.addWidget(self.optimizeButton)
+        grid = QGridLayout()
+        self.setLayout(grid)
+
+        self.loadcrystalButton = QPushButton()
+        self.loadcrystalButton.setText("Load Crystal File")
+        grid.addWidget(self.loadcrystalButton, 0, 0)
+
+        self.loadInstrumentFileButton = QPushButton()
+        self.loadInstrumentFileButton.setText('Load Instrument File')
+        grid.addWidget(self.loadInstrumentFileButton,1,0)
+
+        self.sectorNucButton = QPushButton()
+        self.sectorNucButton.setText('Sector Nuc')
+        grid.addWidget(self.sectorNucButton,2,0)
+
+        self.sectorMagButton = QPushButton()
+        self.sectorMagButton.setText('Sector Mag')
+        grid.addWidget(self.sectorMagButton,3,0)
 
 
 
+class NucButtons11(QWidget):
 
-class Buttons30(QWidget):
     def __init__(self):
         super().__init__()
-        self.hbox = QHBoxLayout()
-        self.setLayout(self.hbox)
+        grid = QGridLayout()
+        self.setLayout(grid)
+
+        self.prepareNucButton = QPushButton()
+        self.prepareNucButton.setText("Prepare")
+        grid.addWidget(self.prepareNucButton,0,0)
+
+        self.sortNucButton = QPushButton()
+        self.sortNucButton.setText("Sort")
+        grid.addWidget(self.sortNucButton,0,1)
+
+        self.optimizeNucButton = QPushButton()
+        self.optimizeNucButton.setText("Optimize")
+        grid.addWidget(self.optimizeNucButton,0,2)
+
+        self.saveNucButton = QPushButton()
+        self.saveNucButton.setText("Save")
+        grid.addWidget(self.saveNucButton,0,3)
 
 
-        self.runButton = QPushButton('Run')
-        self.saveButton = QPushButton('Save')
+calss MagButtons11(QWidget):
 
-        self.hbox.addWidget(self.runButton)
-        self.hbox.addWidget(self.saveButton)
+
+
+
+
 
 
 
