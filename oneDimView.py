@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QPlainTextEdit, QHBoxLayout, QWidget, QGridLayout, QLabel, QPushButton, QTableWidget, QTableWidgetItem
-
+from tools import Tools
 
 class OneDimView(QWidget):
 
@@ -28,10 +28,10 @@ class OneDimView(QWidget):
         # but to create the correct visual effect it must span also over the invisible spacder column,
         # Thus from (3,1) to (3,3).
         self.grid.addWidget(QLabel(), 10,10)
-        self.load_data_button = QPushButton()
-        self.load_data_button.setText("Load Data File")
-        self.load_data_button.setMaximumWidth(200)
-        self.grid.addWidget(self.load_data_button, 0, 0)
+        self.loadDataButton = QPushButton()
+        self.loadDataButton.setText("Load Data File")
+        self.loadDataButton.setMaximumWidth(200)
+        self.grid.addWidget(self.loadDataButton, 0, 0)
 
 
         self.one_d_text = OneDText()
@@ -55,6 +55,8 @@ class OneDimView(QWidget):
         self.grid.addWidget(self.buttons32,3,2)
 
     def set_widget_actions(self):
+
+        self.dataFile = self.loadDataButton.clicked.connect(lambda: Tools().open_file(self))
         pass
 
 

@@ -4,7 +4,7 @@
 from PyQt5.QtWidgets import QPlainTextEdit, QVBoxLayout, QHBoxLayout, QWidget, QGridLayout, QLabel, QPushButton, QTableWidget, QTableWidgetItem
 
 from PyQt5.QtGui import QPixmap
-
+from tools import Tools
 
 class PrepareView(QWidget):
 
@@ -15,7 +15,6 @@ class PrepareView(QWidget):
         self.grid = QGridLayout()
 
         self.setLayout(self.grid)
-
 
         self.define_widgets()
         self.showView('none')
@@ -84,6 +83,9 @@ class PrepareView(QWidget):
 
 
     def set_widget_actions(self):
+        self.crystalFile = self.loadCrystalFileButton.clicked.connect(lambda: Tools().open_file(self))
+        self.instrumentFile = self.loadInstrumentFileButton.clicked.connect(lambda: Tools().open_file(self))
+
         self.sectorNucButton.clicked.connect(lambda: self.showView('nuc'))
         self.sectorMagButton.clicked.connect(lambda: self.showView('mag'))
         pass
@@ -144,9 +146,9 @@ class Buttons00(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        c.loadcrystalButton = QPushButton()
-        c.loadcrystalButton.setText("Load Crystal File")
-        grid.addWidget(c.loadcrystalButton, 0, 0)
+        c.loadCrystalFileButton = QPushButton()
+        c.loadCrystalFileButton.setText("Load Crystal File")
+        grid.addWidget(c.loadCrystalFileButton, 0, 0)
 
         c.loadInstrumentFileButton = QPushButton()
         c.loadInstrumentFileButton.setText('Load Instrument File')

@@ -70,7 +70,6 @@ class Zebra(QMainWindow):
         self.oneDMenuEntry = QAction('1D Mode')
         self.oneDMenuEntry.triggered.connect(lambda: self.showView('1D'))
         self.modeMenu.addAction(self.oneDMenuEntry)
-
         self.twoDMenuEntry = QAction('2D Mode')
         self.twoDMenuEntry.triggered.connect(lambda: self.showView('2D'))
         self.modeMenu.addAction(self.twoDMenuEntry)
