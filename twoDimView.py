@@ -34,7 +34,7 @@ class TwoDimView(QWidget):
 
         # add empty label as spacer after buttons
         # this has some side effects (i suspect) :
-        # + when adding the Buttons20, we really mean for it to span from grid position (3,1) to (3,2)
+        # + when adding the Buttons12, we really mean for it to span from grid position (3,1) to (3,2)
         # but to create the correct visual effect it must span also over the invisible spacder column,
         # Thus from (3,1) to (3,3).
         self.grid.addWidget(QLabel(), 10,10)
@@ -56,12 +56,13 @@ class TwoDimView(QWidget):
 
 
 
-        self.buttons20 = Buttons20()
-        self.grid.addWidget(self.buttons20, 2,0)
 
-        self.buttons30 = Buttons30()
-        self.grid.addWidget(self.buttons30, 3,0)
 
+        self.buttons11 = Buttons11()
+        self.grid.addWidget(self.buttons11, 1,1)
+
+        self.buttons12 = Buttons12()
+        self.grid.addWidget(self.buttons12, 1,2)
 
 
     def set_widget_actions(self):
@@ -97,34 +98,52 @@ class OneDVisualize(QPlainTextEdit):
     def __init__(self):
         super().__init__()
         self.setMinimumSize(200,200)
-        self.setPlainText('Placeholder\nfor OneDVisualize().')
+        self.setPlainText('Placeholder\nfor Visualization.')
 
 
-class Buttons20(QWidget):
+
+
+
+
+class Buttons11(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.grid = QGridLayout()
+        self.setLayout(self.grid)
+
+        self.searchButton = QPushButton('Search')
+        self.grid.addWidget(self.searchButton, 0,0)
+
+        self.addButton = QPushButton('Add')
+        self.grid.addWidget(self.addButton,0,1)
+
+        self.substractButton = QPushButton('Substract')
+        self.grid.addWidget(self.substractButton, 0,2)
+
+        self.integrateButton = QPushButton('Integrate')
+        self.grid.addWidget(self.integrateButton,1,0)
+
+        self.lorentzButton = QPushButton('Lorentz')
+        self.grid.addWidget(self.lorentzButton,1,1)
+
+        self.absorptionButton = QPushButton('Absorption')
+        self.grid.addWidget(self.absorptionButton,1,2)
+
+        self.saveWorksheetButton = QPushButton('Save')
+        self.grid.addWidget(self.saveWorksheetButton,0,3,2,3)
+
+
+class Buttons12(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.hbox = QHBoxLayout()
-        self.setLayout(self.hbox)
-        self.sortButton = QPushButton('Sort')
-        self.selectButton = QPushButton('Select')
-        self.optimizeButton = QPushButton('Optimize')
-        self.hbox.addWidget(self.sortButton)
-        self.hbox.addWidget(self.selectButton)
-        self.hbox.addWidget(self.optimizeButton)
+        self.grid = QGridLayout()
+        self.setLayout(self.grid)
+        self.qmapsButton = QPushButton('Q-Maps')
+        self.grid.addWidget(self.qmapsButton,0,0)
 
+        self.plotdatavsButton = QPushButton('Plot Data VS')
+        self.grid.addWidget(self.plotdatavsButton,1,0)
 
-
-
-class Buttons30(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.hbox = QHBoxLayout()
-        self.setLayout(self.hbox)
-
-
-        self.runButton = QPushButton('Run')
-        self.saveButton = QPushButton('Save')
-
-        self.hbox.addWidget(self.runButton)
-        self.hbox.addWidget(self.saveButton)
+        self.saveVisualizationButton = QPushButton('Save')
+        self.grid.addWidget(self.saveVisualizationButton,0,1,2,1)
