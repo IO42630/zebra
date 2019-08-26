@@ -2,8 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton,QLabel, QVBoxLayout, QWidget
 
-from two_d_mode import TwoDMode
-from one_d_mode import OneDMode, OneDTable
+
 
 
 
@@ -17,7 +16,7 @@ class TestAWidget(QMainWindow):
         super().__init__()
 
 
-        self.testWidget = OneDMode()
+        self.testWidget = QPushButton()
 
 
 

@@ -6,7 +6,16 @@ This is a frontend for the collection of tools used by the zebra.
 ### Contents
 | File | Description |
 |---|---|
-|`wiondow.py`  | The main window. Run from here.|
+| `oneDimView.py` | Widget containing the 1D Mode.|
+| `plot_canvas.py` | Example of a plot. Used by `window.py`. To reuse.|
+| `prepareView.py` | Widget containing the Prepare Mode.|
+| `tab.py` | Example of a tab. Standalone.|
+| `test_a_widget.py` | Window wrapper for easy testing of Widgets.|
+| `tools.py` | Tools used by Widgets.|
+| `twoDimView.py` | Widget containing the 2D Mode.|
+| `welcomeView.py` | Widget containing the Welcome Screen.|
+| `window.py` | Example of a button based interface. Standalone. Legacy. |
+| `zebra.py` | Main Window of the application. Run from here.
 
 <br>
 
