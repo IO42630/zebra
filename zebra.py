@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QGraphicsPix
 from twoDimView import TwoDimView
 from oneDimView import OneDimView
 from welcomeView import WelcomeView
-from zebraView import ZebraView
+from prepareView import PrepareView
 
 
 
@@ -40,9 +40,9 @@ class Zebra(QMainWindow):
         self.vbox.addWidget(self.welcomeView)
         self.welcomeView.setHidden(False)
 
-        self.zebraView = ZebraView()
-        self.vbox.addWidget(self.zebraView)
-        self.zebraView.setHidden(True)
+        self.prepareView = PrepareView()
+        self.vbox.addWidget(self.prepareView)
+        self.prepareView.setHidden(True)
 
         self.oneDimView = OneDimView()
         self.vbox.addWidget(self.oneDimView)
@@ -57,8 +57,14 @@ class Zebra(QMainWindow):
         ''' Set up the main menu.'''
         self.modeMenu = self.menuBar().addMenu('Mode')
 
-        self.zebraMenuEntry = QAction('Zebra')
-        self.zebraMenuEntry.triggered.connect(lambda: self.showView('zebra'))
+
+        self.welcomeMenuEntry = QAction('Zebra')
+        self.welcomeMenuEntry.triggered.connect(lambda: self.showView('welcome'))
+        self.modeMenu.addAction(self.welcomeMenuEntry)
+
+
+        self.zebraMenuEntry = QAction('Prepare')
+        self.zebraMenuEntry.triggered.connect(lambda: self.showView('prepare'))
         self.modeMenu.addAction(self.zebraMenuEntry)
 
         self.oneDMenuEntry = QAction('1D Mode')
@@ -73,12 +79,14 @@ class Zebra(QMainWindow):
 
     def showView(self, view):
         self.welcomeView.setHidden(True)
-        self.zebraView.setHidden(True)
+        self.prepareView.setHidden(True)
         self.oneDimView.setHidden(True)
         self.twoDimView.setHidden(True)
 
-        if view == 'zebra':
-            self.zebraView.setHidden(False)
+        if view == 'welcome':
+            self.welcomeView.setHidden(False)
+        elif view == 'prepare':
+            self.prepareView.setHidden(False)
         elif view == '1D':
             self.oneDimView.setHidden(False)
         elif view =='2D':
