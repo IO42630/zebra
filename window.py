@@ -4,6 +4,13 @@ from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGr
 from plot_canvas import PlotCanvas
 
 class Window(QMainWindow):
+    '''
+    How it works:
+    First a window is created.
+    Then all the widgets (buttons, sliders, plots) are added to the window and hidden.
+    Finally depending on what view is requested widgets are shown or hidden.
+    This way we work around the need for tabs and maintain a quick and simple UI.
+    '''
 
     def __init__(self):
         super().__init__()
