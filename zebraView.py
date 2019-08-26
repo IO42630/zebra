@@ -154,7 +154,6 @@ class NucButtons11(QWidget):
         grid.addWidget(self.saveNucButton,0,3)
 
 
-calss MagButtons11(QWidget):
 
 
 
