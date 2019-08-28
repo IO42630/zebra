@@ -85,12 +85,16 @@ class Zebra(QMainWindow):
 
         if view == 'welcome':
             self.welcomeView.setHidden(False)
+            self.setWindowTitle('Zebra')
         elif view == 'prepare':
             self.prepareView.setHidden(False)
+            self.setWindowTitle('Prepare Experiment')
         elif view == '1D':
             self.oneDimView.setHidden(False)
+            self.setWindowTitle('1D Mode')
         elif view =='2D':
             self.twoDimView.setHidden(False)
+            self.setWindowTitle('2D Mode')
         else:
             pass
 
