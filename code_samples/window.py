@@ -1,7 +1,7 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QSpacerItem, QSizePolicy, QComboBox, QFileDialog
-from plot_canvas import PlotCanvas
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QGridLayout, QLabel, QComboBox, QFileDialog
+from code_samples.plot_canvas import PlotCanvas
 
 class Window(QMainWindow):
     '''

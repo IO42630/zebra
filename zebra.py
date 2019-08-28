@@ -1,10 +1,10 @@
 import sys
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QGraphicsPixmapItem, QLabel,QWidget, QVBoxLayout, QAction
-from twoDimView import TwoDimView
-from oneDimView import OneDimView
-from welcomeView import WelcomeView
-from prepareView import PrepareView
+from two_d_view import TwoDimView
+from one_d_view import OneDimView
+from welcome_view import WelcomeView
+from prepare_view import PrepareView
 
 
 # test

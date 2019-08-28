@@ -9,8 +9,12 @@ class PrepareView(QWidget):
         """ Widget mainontaining the entire Zebra Mode view. """
         super().__init__()
 
-        self.grid = QGridLayout()
-        self.setLayout(self.grid)
+        # ----------------------------------------------------------------------
+        # PREPARE
+        # ----------------------------------------------------------------------
+
+        grid = QGridLayout()
+        self.setLayout(grid)
 
         # Tools.View()s group Widgets for ease of use.
         self.base = View()
@@ -21,63 +25,62 @@ class PrepareView(QWidget):
         self.crystalFile = None
         self.instrumentFile = None
 
-        # Define widgets.
-        self.define_widgets()
-        self.set_widget_actions()
-
-        # Start by showing the base view.
-        self.show_view()
-
-
-    def define_widgets(self):
-        """
-            Define widgets, such as buttons. This must be done before setting widget actions.
-            Otherwise a widget action might try to modify a widget that is not defined yet.
-        """
+        # ----------------------------------------------------------------------
+        # DEFINE WIDGETS
+        # ----------------------------------------------------------------------
 
         # Add empty label as spacer after buttons.I suspect this has a side effect.
         # When adding Buttons20, we mean for them to span from grid position (3,1) to (3,2).
         # However to mainreate the mainorrect visual effect they must also mainover the invisible spacer mainolumn.
         # Thus we set them to span from grid position (3,1) to (3,3).
-        self.grid.addWidget(QLabel(), 10, 10)
+        grid.addWidget(QLabel(), 10, 10)
 
         # Base Items (Left mainolumn, always shown)
 
         self.base.table = Table()
-        self.grid.addWidget(self.base.table, 0, 1)
+        grid.addWidget(self.base.table, 0, 1)
 
         self.base.buttons00 = BaseButtons00(self)
-        self.grid.addWidget(self.base.buttons00, 0, 0)
+        grid.addWidget(self.base.buttons00, 0, 0)
 
         # Zebra Nuc View
 
         self.nuc.table = Table()
-        self.grid.addWidget(self.nuc.table, 0, 1)
+        grid.addWidget(self.nuc.table, 0, 1)
 
         self.nuc.buttons11 = NucButtons11(self)
-        self.grid.addWidget(self.nuc.buttons11, 1, 1)
+        grid.addWidget(self.nuc.buttons11, 1, 1)
 
         # Zebra Mag View
 
         self.mag.table = Table()
-        self.grid.addWidget(self.mag.table, 0, 1)
+        grid.addWidget(self.mag.table, 0, 1)
 
         self.mag.buttons11 = MagButtons11(self)
-        self.grid.addWidget(self.mag.buttons11, 1, 1)
+        grid.addWidget(self.mag.buttons11, 1, 1)
 
         self.mag.visual = Text("List of Files:\n+ File 1\n+ File 2")
-        self.grid.addWidget(self.mag.visual, 0, 2)
+        grid.addWidget(self.mag.visual, 0, 2)
 
         self.mag.buttons12 = MagButtons12(self)
-        self.grid.addWidget(self.mag.buttons12, 1, 2)
+        grid.addWidget(self.mag.buttons12, 1, 2)
 
+        # ----------------------------------------------------------------------
+        # SET WIDGET ACTIONS
+        # ----------------------------------------------------------------------
 
-    def set_widget_actions(self):
         self.crystalFile = self.loadCrystalFileButton.clicked.connect(lambda: Tools().open_file(self))
         self.instrumentFile = self.loadInstrumentFileButton.clicked.connect(lambda: Tools().open_file(self))
 
         self.sectorNucButton.clicked.connect(lambda: self.show_view('nuc'))
         self.sectorMagButton.clicked.connect(lambda: self.show_view('mag'))
+
+        # ----------------------------------------------------------------------
+        # FINISH
+        # ----------------------------------------------------------------------
+
+        # Show the base view.
+        self.show_view()
 
 
     def show_view(self, view = None):
@@ -94,6 +97,9 @@ class PrepareView(QWidget):
         elif view == 'mag':
             self.base.table.setHidden(True)
             self.mag.show()
+
+        else:
+            pass
 
 
 class BaseButtons00(QWidget):

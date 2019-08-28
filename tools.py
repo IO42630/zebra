@@ -14,8 +14,8 @@ class Tools():
 
 
     def open_file(self, container):
-        ''' Corresponds to 1.2
-        TODO Right now this is just copy&pasted. Clean this up.'''
+        """ Corresponds to 1.2
+        TODO Right now this is just copy&pasted. Clean this up."""
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(container,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
@@ -53,18 +53,24 @@ class Text(QPlainTextEdit):
 
 
 class View():
+    """ Groups Widgets for ease of use."""
+
     def __init__(self):
+        """
+            Do not define self. variables here.
+            The idea behind this class is to work with the vars() method.
+        """
         pass
 
 
     def show(self):
-        ''' Show widgets. '''
+        """ Show widgets. """
         #TODO filter this, so that it applies to QWidgets only.
         for widget in vars(self):
             vars(self)[widget].setHidden(False)
 
     def hide(self):
-        ''' Hide widgets. '''
+        """ Hide widgets. """
         for widget in vars(self):
             vars(self)[widget].setHidden(True)
 
