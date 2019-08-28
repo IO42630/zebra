@@ -6,15 +6,12 @@ This is a frontend for the collection of tools used by the zebra.
 ### Contents
 | File | Description |
 |---|---|
-| `oneDimView.py` | Widget containing the 1D Mode.|
-| `plot_canvas.py` | Example of a plot. Used by `window.py`. To reuse.|
-| `prepareView.py` | Widget containing the Prepare Mode.|
-| `tab.py` | Example of a tab. Standalone.|
-| `test_a_widget.py` | Window wrapper for easy testing of Widgets.|
+| `code_samples` | Folder containing inactive code.|
+| `one_d_view.py` | Widget containing the 1D Mode.|
+| `prepare_view.py` | Widget containing the Prepare Mode.|
 | `tools.py` | Tools used by Widgets.|
-| `twoDimView.py` | Widget containing the 2D Mode.|
-| `welcomeView.py` | Widget containing the Welcome Screen.|
-| `window.py` | Example of a button based interface. Standalone. Legacy. |
+| `two_d_view.py` | Widget containing the 2D Mode.|
+| `welcome_view.py` | Widget containing the Welcome Screen.|
 | `zebra.py` | Main Window of the application. Run from here.
 
 <br>
@@ -28,7 +25,7 @@ pip3 install matplotlib
 python3 ./zebra.py
 ```
 
-##### About PyQt
+##### Note about PyQt:
 Every UI element (e.g. *Button*) is a *Widget*. 
 A *Widget* can also have a *Layout* (e.g. *Grid*) 
 and contain other *Widgets*. 
