@@ -162,9 +162,9 @@ class Buttons00(QWidget):
         c.sectorMagButton.setText('Prepare Sector Mag')
         grid.addWidget(c.sectorMagButton,3,0)
 
-        c.sectorMagButton = QPushButton()
-        c.sectorMagButton.setText('Place holder for read Info')
-        grid.addWidget(c.sectorMagButton,4,0)
+        c.readInfoButton = QPushButton()
+        c.readInfoButton.setText('Place holder for read Info')
+        grid.addWidget(c.readInfoButton, 4,0)
 
 
 class NucButtons11(QWidget):
