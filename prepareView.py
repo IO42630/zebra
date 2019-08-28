@@ -146,24 +146,19 @@ class Buttons00(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        c.loadCrystalFileButton = QPushButton()
-        c.loadCrystalFileButton.setText("Load Crystal File")
+        c.loadCrystalFileButton = QPushButton("Load Crystal File")
         grid.addWidget(c.loadCrystalFileButton, 0, 0)
 
-        c.loadInstrumentFileButton = QPushButton()
-        c.loadInstrumentFileButton.setText('Load Instrument File')
+        c.loadInstrumentFileButton = QPushButton('Load Instrument File')
         grid.addWidget(c.loadInstrumentFileButton,1,0)
 
-        c.sectorNucButton = QPushButton()
-        c.sectorNucButton.setText('Prepare Sector Nuc')
+        c.sectorNucButton = QPushButton('Prepare Sector Nuc')
         grid.addWidget(c.sectorNucButton,2,0)
 
-        c.sectorMagButton = QPushButton()
-        c.sectorMagButton.setText('Prepare Sector Mag')
+        c.sectorMagButton = QPushButton('Prepare Sector Mag')
         grid.addWidget(c.sectorMagButton,3,0)
 
-        c.readInfoButton = QPushButton()
-        c.readInfoButton.setText('Place holder for read Info')
+        c.readInfoButton = QPushButton('Place holder for read Info')
         grid.addWidget(c.readInfoButton, 4,0)
 
 
@@ -176,16 +171,13 @@ class NucButtons11(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        c.sortNucButton = QPushButton()
-        c.sortNucButton.setText("Sort")
+        c.sortNucButton = QPushButton("Sort")
         grid.addWidget(c.sortNucButton,0,0)
 
-        c.optimizeNucButton = QPushButton()
-        c.optimizeNucButton.setText("Optimize")
+        c.optimizeNucButton = QPushButton("Optimize")
         grid.addWidget(c.optimizeNucButton,0,1)
 
-        c.saveNucButton = QPushButton()
-        c.saveNucButton.setText("Save")
+        c.saveNucButton = QPushButton("Save")
         grid.addWidget(c.saveNucButton,0,2)
 
 class MagButtons11(QWidget):
@@ -195,8 +187,7 @@ class MagButtons11(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        c.runMagButton = QPushButton()
-        c.runMagButton.setText("Run")
+        c.runMagButton = QPushButton('Run')
         grid.addWidget(c.runMagButton,0,0)
 
 class MagButtons12(QWidget):
@@ -206,16 +197,13 @@ class MagButtons12(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        c.sortMagButton = QPushButton()
-        c.sortMagButton.setText("Sort")
+        c.sortMagButton = QPushButton('Sort')
         grid.addWidget(c.sortMagButton,0,0)
 
-        c.optimizeMagButton = QPushButton()
-        c.optimizeMagButton.setText("Optimize")
+        c.optimizeMagButton = QPushButton('Optimize')
         grid.addWidget(c.optimizeMagButton,0,1)
 
-        c.saveMagButton = QPushButton()
-        c.saveMagButton.setText("Save")
+        c.saveMagButton = QPushButton('Save')
         grid.addWidget(c.saveMagButton,0,2)
 
 
