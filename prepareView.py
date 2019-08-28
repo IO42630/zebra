@@ -4,7 +4,7 @@
 from PyQt5.QtWidgets import QPlainTextEdit, QVBoxLayout, QHBoxLayout, QWidget, QGridLayout, QLabel, QPushButton, QTableWidget, QTableWidgetItem
 
 from PyQt5.QtGui import QPixmap
-from tools import Tools
+from tools import Tools, Table, Text
 
 class PrepareView(QWidget):
 
@@ -37,6 +37,8 @@ class PrepareView(QWidget):
 
         # Common items
 
+        self.baseTable = Table()
+        self.grid.addWidget(self.baseTable,0,1)
 
         self.buttons00 = Buttons00(self)
         self.grid.addWidget(self.buttons00,0,0)
@@ -45,9 +47,8 @@ class PrepareView(QWidget):
 
         # Zebra Nuc View
 
-        self.nucTable = OneDTable()
+        self.nucTable = Table()
         self.grid.addWidget(self.nucTable,0,1)
-
 
         self.nucButtons11 = NucButtons11(self)
         self.grid.addWidget(self.nucButtons11, 1,1)
@@ -55,24 +56,17 @@ class PrepareView(QWidget):
 
 
 
-        #self.buttons20 = Buttons20()
-        #self.grid.addWidget(self.buttons20, 2,0)
-
-        #self.buttons30 = Buttons30()
-        #self.grid.addWidget(self.buttons30, 3,0)
-
-
 
 
         # Zebra Mag View
 
-        self.magTable = OneDTable()
+        self.magTable = Table()
         self.grid.addWidget(self.magTable,0,1)
 
         self.magButtons11 = MagButtons11(self)
         self.grid.addWidget(self.magButtons11,1,1)
 
-        self.magVisual = OneDText()
+        self.magVisual = Text("List of Files:\n+ File 1\n+ File 2")
         self.grid.addWidget(self.magVisual, 0,2)
 
         self.magButtons12 = MagButtons12(self)
@@ -102,9 +96,11 @@ class PrepareView(QWidget):
         self.magButtons12.setHidden(True)
 
         if view == 'nuc':
+            self.baseTable.setHidden(True)
             self.nucTable.setHidden(False)
             self.nucButtons11.setHidden(False)
         elif view == 'mag':
+            self.baseTable.setHidden(True)
             self.magTable.setHidden(False)
             self.magButtons11.setHidden(False)
             self.magVisual.setHidden(False)
@@ -115,26 +111,11 @@ class PrepareView(QWidget):
 
 
 
-class OneDText(QPlainTextEdit):
-    def __init__(self):
-        super().__init__()
-        self.setMinimumSize(200,200)
-        self.setPlainText("List of Files:\n+ File 1\n+ File 2")
 
 
 
-class OneDTable(QTableWidget):
-    def __init__(self):
-        super().__init__()
 
-        self.setSortingEnabled(True)
 
-        self.setRowCount(4)
-        self.setColumnCount(4)
-
-        self.setMinimumSize(300,200)
-
-        self.setHorizontalHeaderLabels({'h', 'k', 'l'})
 
 
 
@@ -205,15 +186,3 @@ class MagButtons12(QWidget):
 
         c.saveMagButton = QPushButton('Save')
         grid.addWidget(c.saveMagButton,0,2)
-
-
-
-
-
-
-
-
-
-
-
-

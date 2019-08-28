@@ -1,7 +1,7 @@
 
 
 import sys
-from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QFileDialog, QTableWidget, QPlainTextEdit
 
 
 
@@ -22,3 +22,25 @@ class Tools():
         if fileName:
             return fileName
         pass
+
+
+class Table(QTableWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setSortingEnabled(True)
+
+        self.setRowCount(4)
+        self.setColumnCount(4)
+
+        self.setMinimumSize(300,200)
+
+        self.setHorizontalHeaderLabels({'h', 'k', 'l'})
+
+
+
+class Text(QPlainTextEdit,):
+    def __init__(self, text):
+        super().__init__()
+        self.setMinimumSize(200,200)
+        self.setPlainText(text)
