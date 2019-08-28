@@ -145,9 +145,6 @@ class Buttons00(QWidget):
         super().__init__()
         grid = QGridLayout()
         self.setLayout(grid)
-        self.set
-        self.setFixedWidth(240)
-        self.setFixedHeight(200)
 
         c.loadCrystalFileButton = QPushButton()
         c.loadCrystalFileButton.setText("Load Crystal File")
@@ -158,13 +155,16 @@ class Buttons00(QWidget):
         grid.addWidget(c.loadInstrumentFileButton,1,0)
 
         c.sectorNucButton = QPushButton()
-        c.sectorNucButton.setText('Sector Nuc')
+        c.sectorNucButton.setText('Prepare Sector Nuc')
         grid.addWidget(c.sectorNucButton,2,0)
 
         c.sectorMagButton = QPushButton()
-        c.sectorMagButton.setText('Sector Mag')
+        c.sectorMagButton.setText('Prepare Sector Mag')
         grid.addWidget(c.sectorMagButton,3,0)
 
+        c.sectorMagButton = QPushButton()
+        c.sectorMagButton.setText('Place holder for read Info')
+        grid.addWidget(c.sectorMagButton,4,0)
 
 
 class NucButtons11(QWidget):
