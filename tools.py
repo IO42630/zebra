@@ -1,7 +1,7 @@
 
 
 import sys
-from PyQt5.QtWidgets import QFileDialog, QTableWidget, QPlainTextEdit
+from PyQt5.QtWidgets import QFileDialog, QTableWidget, QPlainTextEdit,QWidget
 
 
 
@@ -24,6 +24,7 @@ class Tools():
         pass
 
 
+
 class Table(QTableWidget):
     def __init__(self):
         super().__init__()
@@ -39,8 +40,33 @@ class Table(QTableWidget):
 
 
 
-class Text(QPlainTextEdit,):
+
+
+
+
+
+class Text(QPlainTextEdit):
     def __init__(self, text):
         super().__init__()
         self.setMinimumSize(200,200)
         self.setPlainText(text)
+
+
+class View():
+    def __init__(self):
+        pass
+
+
+    def show(self):
+        ''' Show widgets. '''
+        #TODO filter this, so that it applies to QWidgets only.
+        for widget in vars(self):
+            vars(self)[widget].setHidden(False)
+
+    def hide(self):
+        ''' Hide widgets. '''
+        for widget in vars(self):
+            vars(self)[widget].setHidden(True)
+
+
+
